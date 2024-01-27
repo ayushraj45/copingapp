@@ -14,6 +14,7 @@ public class Emotion {
     @GeneratedValue
     private Long id;
     private String emotion;
+    private String description;
 
     @OneToMany
     private List<Questions> questionsList;
@@ -42,5 +43,17 @@ public class Emotion {
 
     public void setQuestionsList(List<Questions> questionsList) {
         this.questionsList = questionsList;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

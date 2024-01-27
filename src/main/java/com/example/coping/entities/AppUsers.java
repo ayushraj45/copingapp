@@ -58,4 +58,8 @@ public class AppUsers {
     public void setPassword_hash(String password_hash) {
         this.password_hash = password_hash;
     }
+
+    public Long getId() {
+        return id;
+    }
 }

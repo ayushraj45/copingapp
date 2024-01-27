@@ -5,6 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 
+import java.time.LocalDateTime;
+
 @Entity
 public class Entry {
 
@@ -15,6 +17,8 @@ public class Entry {
     private String title;
 
     private String content;
+
+    private LocalDateTime timeStamp;
 
     @OneToOne
     private Emotion emotion;
@@ -66,5 +70,17 @@ public class Entry {
 
     public void setAppUser(AppUsers appUser) {
         this.appUser = appUser;
+    }
+
+    public LocalDateTime getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(LocalDateTime timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

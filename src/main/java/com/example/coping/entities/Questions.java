@@ -15,6 +15,8 @@ public class Questions {
     @OneToOne
     private Emotion emotion;
 
+    private String answer;
+
     //Constructor
 
     public Questions() {
@@ -42,5 +44,17 @@ public class Questions {
 
     public void setEmotion(Emotion emotion) {
         this.emotion = emotion;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
