@@ -9,20 +9,14 @@ import java.time.LocalDateTime;
 
 @Entity
 public class Entry {
-
     @Id
     @GeneratedValue
     private Long id;
-
     private String title;
-
     private String content;
-
     private LocalDateTime timeStamp;
-
     @OneToOne
     private Emotion emotion;
-
     @OneToOne
     private AppUsers appUser;
 

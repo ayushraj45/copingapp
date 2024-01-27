@@ -51,12 +51,12 @@ public class QuestionController {
         return questionService.updateAQuestion(question);
     }
 
-    @Operation(summary = "Update a Question Answer", description = "Updates the answer to a question")
-    @PutMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public Questions updateQuestionAsnwer(@RequestBody Questions question, @RequestBody String answer) {
-        return questionService.updateAQuestionAnswer(question, answer);
-    }
+//    @Operation(summary = "Update a Question Answer", description = "Updates the answer to a question")
+//    @PutMapping
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public Questions updateQuestionAsnwer(@RequestBody Questions question, @RequestBody String answer) {
+//        return questionService.updateAQuestionAnswer(question, answer);
+//    }
 
     @Operation(summary = "Delete a Question", description = "Delete a question")
     @DeleteMapping("/{questionId}")

@@ -70,12 +70,12 @@ public class AppUsersService {
             return appUserRepository.save(appUser);
         }
 
-    public AppUsers updateAnAppUserSubscriptionStatus(AppUsers appUser, String subStatus) {
-        if (appUser == null || appUser.getId() == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "AppUser to update must have an id");
-        } else if (!appUserRepository.existsById(appUser.getId())) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AppUser to update cannot be found");
+    public AppUsers updateAnAppUserSubscriptionStatus(Long appUserId, String subStatus) {
+        if (appUserId == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "AppUser to delete must have an id");
         }
+        AppUsers appUser = appUserRepository.findById(appUserId)
+                .orElseThrow(() -> new EntityNotFoundException("User not found"));
         appUser.setSubscriptionStatus(subStatus);
         return appUserRepository.save(appUser);
     }

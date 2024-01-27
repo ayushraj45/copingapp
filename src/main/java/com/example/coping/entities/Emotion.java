@@ -9,13 +9,11 @@ import java.util.List;
 
 @Entity
 public class Emotion {
-
     @Id
     @GeneratedValue
     private Long id;
     private String emotion;
     private String description;
-
     @OneToMany
     private List<Questions> questionsList;
 
@@ -23,8 +21,9 @@ public class Emotion {
     public Emotion() {
     }
 
-    public Emotion(String emotion) {
+    public Emotion(String emotion, String description) {
         this.emotion = emotion;
+        this.description=description;
     }
 
     //Setters and getters

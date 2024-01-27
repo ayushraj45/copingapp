@@ -7,14 +7,12 @@ import jakarta.persistence.OneToOne;
 
 @Entity
 public class Questions {
-
     @Id
     @GeneratedValue
     Long id;
     private String questions;
     @OneToOne
     private Emotion emotion;
-
     private String answer;
 
     //Constructor

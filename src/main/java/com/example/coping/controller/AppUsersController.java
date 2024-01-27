@@ -61,10 +61,10 @@ public class AppUsersController {
         return appUserService.updateAnAppUser(appUser);
     }
     @Operation(summary = "Update an AppUser subscription status", description = "Update an app user subscription status")
-    @PutMapping
+    @PutMapping("/{appUserId}/subscription/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public AppUsers updateAppUserSubscriptionStatus(@RequestBody AppUsers appUser, String status) {
-        return appUserService.updateAnAppUserSubscriptionStatus(appUser, status);
+    public AppUsers updateAppUserSubscriptionStatus(@RequestBody Long appUserId, String status) {
+        return appUserService.updateAnAppUserSubscriptionStatus(appUserId, status);
     }
 
     @Operation(summary = "Delete an AppUser", description = "Delete an app user")
