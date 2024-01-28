@@ -1,20 +1,18 @@
 package com.example.coping.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
 public class Emotion {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String emotion;
     private String description;
-    @OneToMany
+    @OneToMany(mappedBy = "emotion",cascade = CascadeType.ALL)
     private List<Questions> questionsList;
 
     //Constructors
@@ -35,7 +33,7 @@ public class Emotion {
     public void setEmotion(String emotion) {
         this.emotion = emotion;
     }
-
+    @JsonIgnore
     public List<Questions> getQuestionsList() {
         return questionsList;
     }

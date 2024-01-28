@@ -1,23 +1,24 @@
 package com.example.coping.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
 @Entity
 public class Entry {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String title;
     private String content;
     private LocalDateTime timeStamp;
     @OneToOne
     private Emotion emotion;
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "app_user_id")
+    @JsonBackReference
     private AppUsers appUser;
 
     //Constructors
@@ -63,7 +64,7 @@ public class Entry {
     }
 
     public void setAppUser(AppUsers appUser) {
-        this.appUser = appUser;
+        this.appUser = this.appUser;
     }
 
     public LocalDateTime getTimeStamp() {

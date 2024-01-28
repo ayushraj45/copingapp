@@ -1,9 +1,7 @@
 package com.example.coping.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,11 +10,12 @@ import java.util.List;
 public class AppUsers {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String username;
     private String subscriptionStatus=null;
-    @OneToMany
+    @OneToMany(mappedBy = "appUser", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Entry> entries = new ArrayList<>();
     private String password_hash;
 

@@ -1,9 +1,6 @@
 package com.example.coping.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
 @Entity
 public class Questions {
@@ -11,7 +8,8 @@ public class Questions {
     @GeneratedValue
     Long id;
     private String questions;
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "emotion_id")
     private Emotion emotion;
     private String answer;
 
@@ -35,7 +33,6 @@ public class Questions {
     public void setQuestions(String questions) {
         this.questions = questions;
     }
-
     public Emotion getEmotion() {
         return emotion;
     }

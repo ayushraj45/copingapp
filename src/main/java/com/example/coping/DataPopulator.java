@@ -37,31 +37,33 @@ public class DataPopulator {
 
     @EventListener(ContextRefreshedEvent.class)
     public void populateData() {
+
+        questionsRepository.deleteAll();
+        entryRepository.deleteAll();
+        emotionRepository.deleteAll();
+        appUsersRepository.deleteAll();
+
         // Dummy data for AppUsers
         AppUsers user1 = new AppUsers("user1");
         AppUsers user2 = new AppUsers("user2");
-
         appUsersRepository.save(user1);
         appUsersRepository.save(user2);
 
         // Dummy data for Emotion
         Emotion happy = new Emotion("Happy", "Feeling joyful");
         Emotion sad = new Emotion("Sad", "Feeling down");
-
         emotionRepository.save(happy);
         emotionRepository.save(sad);
 
         // Dummy data for Entry
         Entry entry1 = new Entry("Entry 1", "Content 1", happy, user1);
         Entry entry2 = new Entry("Entry 2", "Content 2", sad, user2);
-
         entryRepository.save(entry1);
         entryRepository.save(entry2);
 
         // Dummy data for Questions
         Questions question1 = new Questions("How are you feeling today?", happy);
         Questions question2 = new Questions("What makes you sad?", sad);
-
         questionsRepository.save(question1);
         questionsRepository.save(question2);
     }

@@ -1,0 +1,28 @@
+---- Dummy data for AppUsers
+--USE copingdb;
+--DELETE FROM app_users_entries;
+--DELETE FROM emotion_questions_list;
+--DELETE FROM questions;
+--delete from entry;
+--delete FROM app_users_entries;
+--DELETE FROM app_users;
+--DELETE FROM emotion;
+--
+--INSERT INTO app_users (id,username, subscription_status) VALUES
+--  (100,'user1', 'ACTIVE'),
+--  (200,'user2', 'INACTIVE');
+--
+---- Dummy data for Emotion
+--INSERT INTO emotion (id,emotion, description) VALUES
+--  (1,'Happy', 'Feeling joyful'),
+--  (2, 'Sad', 'Feeling down');
+--
+---- Dummy data for Entry
+--INSERT INTO entry (id, title, content, time_stamp, emotion_id, app_user_id) VALUES
+--  (10,'Entry 1', 'Content 1', CURRENT_TIMESTAMP, 1, 100),
+--  (20,'Entry 2', 'Content 2', CURRENT_TIMESTAMP, 2, 200);
+--
+---- Dummy data for Questions
+--INSERT INTO questions (id, questions, emotion_id, answer) VALUES
+--  (11,'How are you feeling today?', 1, 'Good'),
+--  (12,'What makes you sad?', 2, 'Personal reasons');
