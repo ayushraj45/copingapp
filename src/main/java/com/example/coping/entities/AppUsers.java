@@ -17,6 +17,10 @@ public class AppUsers {
     @OneToMany(mappedBy = "appUser", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<Entry> entries = new ArrayList<>();
+
+    @OneToMany(mappedBy = "appUser", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<GratiToken> gratiTokens = new ArrayList<>();
     private String password_hash;
 
     //Constructors
@@ -28,7 +32,6 @@ public class AppUsers {
     }
 
     //Setters and Getters
-
 
     public String getUsername() {
         return username;
@@ -56,6 +59,14 @@ public class AppUsers {
 
     public void setPassword_hash(String password_hash) {
         this.password_hash = password_hash;
+    }
+
+    public List<GratiToken> getGratiTokens() {
+        return gratiTokens;
+    }
+
+    public void setGratiTokens(List<GratiToken> gratiTokens) {
+        this.gratiTokens = gratiTokens;
     }
 
     public Long getId() {

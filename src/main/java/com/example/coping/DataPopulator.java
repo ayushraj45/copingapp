@@ -35,7 +35,7 @@ public class DataPopulator {
         this.questionsRepository = questionsRepository;
     }
 
-    @EventListener(ContextRefreshedEvent.class)
+    //@EventListener(ContextRefreshedEvent.class)
     public void populateData() {
 
         questionsRepository.deleteAll();
@@ -56,8 +56,8 @@ public class DataPopulator {
         emotionRepository.save(sad);
 
         // Dummy data for Entry
-        Entry entry1 = new Entry("Entry 1", "Content 1", happy, user1);
-        Entry entry2 = new Entry("Entry 2", "Content 2", sad, user2);
+        Entry entry1 = new Entry("Entry 1", "Content 1", happy, "I am feeling sad because I didn't get the job I worked so hard for",user1);
+        Entry entry2 = new Entry("Entry 2", "Content 2", sad, "I feel ignored in my school", user2);
         entryRepository.save(entry1);
         entryRepository.save(entry2);
 

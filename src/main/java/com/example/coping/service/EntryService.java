@@ -48,6 +48,19 @@ public class EntryService {
         return questionService.getAllQuestionWithEmotion(emotion.getId());
     }
 
+    public List<Questions> getAIQuestionsForAnEntry(Long entryId) {
+        if (entryId == null)
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Entry to return cannot have an empty ID");
+        Entry entry = entryRepository.findById(entryId)
+                .orElseThrow(() -> new EntityNotFoundException("Entry not found"));
+        if(entry.getContentForAi().isEmpty()){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Entry must have content For AI");
+        }
+        String aiContent = entry.getContentForAi();
+        Emotion emotion = entry.getEmotion();
+        return questionService.getAIQuestionsForAiContentInEntry(aiContent,emotion);
+    }
+
     public Entry addAnEntry(Entry entry) {
         if (entry == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Entry to add cannot be null");
@@ -75,6 +88,7 @@ public class EntryService {
             entryRepository.deleteById(entryId);
         }
     }
+
 
 }
 

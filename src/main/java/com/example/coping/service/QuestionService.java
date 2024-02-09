@@ -1,5 +1,6 @@
 package com.example.coping.service;
 
+import com.example.coping.controller.GPTQController;
 import com.example.coping.data.EmotionRepository;
 import com.example.coping.data.QuestionRepository;
 import com.example.coping.entities.Emotion;
@@ -20,6 +21,9 @@ public class QuestionService {
     private final EmotionRepository emotionRepository;
 
     @Autowired
+    private GPTQController gptController;
+
+    @Autowired
     public QuestionService(QuestionRepository questionRepository, EmotionRepository emotionRepository) {
         this.questionRepository = questionRepository;
         this.emotionRepository=emotionRepository;
@@ -33,6 +37,22 @@ public class QuestionService {
                 .orElseThrow(() -> new EntityNotFoundException("Emotion not found"));
         List<Questions> emotionBasedQuestionSet = emotion.getQuestionsList();
         return emotionBasedQuestionSet;
+    }
+
+    public List<Questions> getAIQuestionsForAiContentInEntry(String aiContent, Emotion emotion){
+
+        String prompt = "considering the content of the entry below. Generate 5 personalized questions that encourage self-reflection and understanding and help the user gain deeper insights into their emotions. Ensure the questions are thoughtful and tailored to this entry's specific feelings and experiences. Entry: ";
+        prompt += aiContent;
+        String response= gptController.createQuestions(prompt);
+        String[] questionsArray = response.split("\n");
+
+        List<Questions> aiQuestionList = new ArrayList<>();
+
+        for (String question: questionsArray
+             ) {
+            aiQuestionList.add(new Questions(question,emotion));
+        }
+        return aiQuestionList;
     }
 
     // Methods
